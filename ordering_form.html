@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kyler's Hobby Shop - Order Form</title>
+<style>
+:root {
+  --purple-1: #6b21a8;
+  --purple-2: #9333ea;
+  --bg: #f3f2f8;
+  --card: #ffffff;
+  --muted: #6b6b7a;
+}
+html,body {
+  height:100%;
+  margin:0;
+  padding:0;
+  background:var(--bg);
+  font-family: Arial, Helvetica, sans-serif;
+  color:#222;
+}
+.navbar {
+  background:#fff;
+  text-align:center;
+  padding:12px 0;
+  box-shadow:0 2px 10px rgba(0,0,0,0.06);
+}
+.navbar a {
+  color:var(--purple-1);
+  text-decoration:none;
+  margin:0 18px;
+  font-weight:600;
+}
+.navbar a:hover {
+  color:var(--purple-2);
+}
+.hero {
+  background: linear-gradient(135deg,var(--purple-1),var(--purple-2));
+  color:#fff;
+  text-align:center;
+  padding:36px 20px;
+  border-radius:0 0 12px 12px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.12);
+}
+.hero h1 { margin:0;font-size:2.6rem;letter-spacing:0.6px }
+.hero p { margin:6px 0;opacity:0.95 }
+.wrap { width:80%;max-width:1100px;margin:28px auto }
+.card {
+  background:var(--card);
+  border-radius:12px;
+  padding:18px;
+  box-shadow:0 6px 20px rgba(17,17,17,0.06);
+}
+.menu-title { color:var(--purple-1);margin:0 0 12px 0;font-size:1.15rem;font-weight:600 }
+label { display:block;margin-bottom:6px;font-weight:600 }
+input, select {
+  width:100%;
+  padding:10px;
+  margin-bottom:16px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:1rem;
+}
+button {
+  display:inline-block;
+  background:linear-gradient(135deg,var(--purple-2),var(--purple-1));
+  color:#fff;border:none;
+  padding:10px 20px;border-radius:8px;
+  cursor:pointer;font-size:1rem;font-weight:700;
+}
+button:hover { opacity:0.9; }
+.product-img {
+  display:block;width:120px;height:auto;
+  margin:10px auto;border-radius:8px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+.footer-wrap {
+  width:80%;max-width:1100px;margin:18px auto 46px auto;text-align:center;
+}
+.hours {
+  background:#fff;padding:16px;border-radius:10px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.06);
+  color:var(--muted);margin-bottom:12px;font-style:italic;
+}
+.cta {
+  display:inline-block;background:linear-gradient(135deg,var(--purple-2),var(--purple-1));
+  color:#fff;padding:8px 18px;border-radius:8px;text-decoration:none;font-weight:700;
+}
+@media (max-width:900px) {
+  .hero h1 { font-size:1.8rem }
+  .wrap,.footer-wrap { width:94% }
+}
+</style>
+</head>
+<body>
+<div class="navbar">
+  <a href="index.html">Home</a>
+  <a href="ordering_form.html">Order Form</a>
+  <a href="contact_us.html">Contact Us</a>
+</div>
+
+<header class="hero">
+  <h1>Kyler's Hobby Shop</h1>
+  <p>Order Form</p>
+</header>
+
+<main class="wrap">
+  <section class="card">
+    <h2 class="menu-title">Place Your Order</h2>
+    <form>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" placeholder="Enter your full name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter your email" required>
+
+      <label for="product">Select Product</label>
+      <select id="product" required>
+        <option value="">-- Choose a Product --</option>
+        <option value="boosterpack">Pokémon Booster Pack - ₱250</option>
+        <option value="elitetrainerbox">Pokémon Elite Trainer Box - ₱2200</option>
+        <option value="specialeditioncard">Special Edition Pokémon Card - ₱1200</option>
+        <option value="nike">Basketball Sneakers (Nike) - ₱6500</option>
+        <option value="adidas">Basketball Sneakers (Adidas) - ₱5800</option>
+      </select>
+
+      <div id="preview">
+        <img src="boosterpack.jpg" id="preview-img" alt="Product Preview" class="product-img">
+      </div>
+
+      <label for="quantity">Quantity</label>
+      <input type="number" id="quantity" min="1" value="1" required>
+
+      <button type="submit">Submit Order</button>
+    </form>
+  </section>
+</main>
+
+<div class="footer-wrap">
+  <div class="hours">Open: 10:00 AM – 8:00 PM</div>
+  <a class="cta" href="index.html">Back to Home</a>
+</div>
+
+<script>
+const productSelect = document.getElementById("product");
+const previewImg = document.getElementById("preview-img");
+const images = {
+  boosterpack: "boosterpack.jpg",
+  elitetrainerbox: "elitetrainerbox.jpg",
+  specialeditioncard: "specialeditioncard.jpg",
+  nike: "nike.jpg",
+  adidas: "adidas.jpg"
+};
+productSelect.addEventListener("change", () => {
+  const selected = productSelect.value;
+  previewImg.src = images[selected] || "boosterpack.jpg";
+});
+</script>
+</body>
+</html>
